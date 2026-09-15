@@ -5,12 +5,12 @@ A public-facing Shiny dashboard of water availability and use in the
 Massachusetts. It is built for residents, public officials, and the
 Ipswich River Watershed Association (IRWA) and Parker River Clean Water
 Association (PRCWA). Its goal is that decisions about drought and water
-use start from the same sourced evidence.
+use start from the same source evidence.
 
 Every number is either read from public USGS and U.S. Drought Monitor
 data, or explicitly labeled **Illustrative**. Nothing is fabricated.
 
-<!-- Screenshot: add a capture of the Summary view here, e.g. ![Summary view](docs/screenshot-summary.png), once the merged UI is final. -->
+<!-- Screenshot: add a capture of the Summary view here, e.g.![Summary view](docs/screenshot-summary.png), once the merged UI is final. -->
 
 > **Status:** working prototype. Some figures, such as municipal water
 > use and the water budget, are illustrative placeholders, and the
@@ -20,7 +20,7 @@ data, or explicitly labeled **Illustrative**. Nothing is fabricated.
 ## What it shows
 
 The dashboard is one scrolling page. The **Summary / Details /
-Evidence** buttons add depth to it; they are not separate tabs.
+Evidence** buttons add depth; they are not separate tabs.
 
 - **Summary:**
   - the stress banner (score not yet available)
