@@ -1,0 +1,13 @@
+Package: essexwaterdashboard
+Title: Essex County Water Dashboard
+Version: 0.1.0
+Description: Shiny dashboard for the Parker and Ipswich River watersheds.
+    A scheduled ETL script pulls USGS streamflow, groundwater, and
+    precipitation (USGS OGC API) and U.S. Drought Monitor data into a
+    local SQLite store; the app reads only from that store.
+Encoding: UTF-8
+Imports: shiny, bslib, shinyWidgets, plotly, htmltools, httr2,
+    jsonlite, yaml, DBI, RSQLite, leaflet
+Suggests: testthat (>= 3.0.0), shinytest2, mockery, httptest2, chromote,
+    lintr, withr
+Config/testthat/edition: 3

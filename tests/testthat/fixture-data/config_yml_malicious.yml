@@ -1,0 +1,6 @@
+permit_status: "<script>alert(1)</script>"
+next_hearing: "<img src=x onerror=alert(1)>"
+eco_flow_threshold_cfs: "8<script>alert('cfs')</script>"
+learn_more_url: "javascript:alert(document.cookie)"
+comment_url: "data:text/html,<script>alert(1)</script>"
+note: "<b onmouseover=alert(1)>hover me</b>"

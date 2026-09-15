@@ -1,0 +1,9 @@
+permit_status: "Status to be confirmed
+next_hearing: [unterminated flow sequence
+  eco_flow_threshold_cfs: 8
+learn_more_url: "https://example.com
+comment_url: 'mismatched "quotes'
+note: >
+  this is broken YAML on purpose
+    - bad indentation
+  key: value: value

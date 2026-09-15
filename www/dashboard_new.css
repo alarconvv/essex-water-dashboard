@@ -1,0 +1,1910 @@
+/* ==========================================================
+   ESSEX COUNTY WATER DASHBOARD
+   New Figma Interface
+
+   Loaded AFTER styles.css (see app.R). About 20 class names are
+   defined in both files; for those, the rules here win and are the
+   authoritative design. Icon file names are case-sensitive on Linux.
+   ========================================================== */
+
+/* Design tokens */
+
+:root {
+  --color-ink: #172533;
+  --color-water: #336891;
+  --color-water-light: #C6D5E0;
+
+  --color-ecology: #C1DB70;
+  --color-ecology-light: #E1EEB9;
+
+  --color-municipal: #F45932;
+  --color-warning: #E75B52;
+
+  --color-page: #F0F0F1;
+  --color-card: #FFFFFF;
+  --color-border: #F3F4F6;
+
+  --radius-card: 12px;
+
+  --shadow-card:
+    0 1px 3px rgba(0, 0, 0, 0.08);
+
+  --content-max-width: 1280px;
+}
+
+
+/* ==========================================================
+   NEW PAGE SHELL
+   ========================================================== */
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+}
+
+.dashboard-shell {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 32px;
+}
+
+
+/* ==========================================================
+   DASHBOARD HEADER
+   ========================================================== */
+
+.dashboard-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  background: var(--color-ink);
+  color: #FFFFFF;
+}
+
+.dashboard-header-inner {
+  max-width: var(--content-max-width);
+  min-height: 80px;
+  margin: 0 auto;
+  padding: 0 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.dashboard-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.dashboard-brand-icon {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+
+  font-size: 18px;
+}
+
+.dashboard-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dashboard-brand-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.dashboard-brand-subtitle {
+  font-size: 11px;
+  line-height: 1.2;
+  opacity: 0.72;
+}
+
+.dashboard-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dashboard-header-control {
+  width: 176px;
+  min-width: 176px;
+}
+
+.dashboard-header-control:first-child {
+  width: 160px;
+  min-width: 160px;
+}
+
+.dashboard-control-label {
+  margin-bottom: 4px;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+
+  opacity: 0.7;
+}
+
+.dashboard-control-value {
+  height: 44px;
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dashboard-control-value svg {
+  font-size: 11px;
+  opacity: 0.75;
+}
+
+.dashboard-date-status {
+  width: 190px;
+  min-width: 190px;
+}
+
+.dashboard-date-range {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.dashboard-updated {
+  margin-top: 3px;
+
+  font-size: 11px;
+  line-height: 1.3;
+
+  opacity: 0.7;
+}
+
+.dashboard-share-button {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 44px;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+
+  cursor: pointer;
+}
+
+.dashboard-share-button:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.dashboard-share-button:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+
+
+/* ==========================================================
+   HEADER RESPONSIVE BEHAVIOR
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+  .dashboard-header-inner {
+    min-height: auto;
+    padding: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .dashboard-header-controls {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .dashboard-header-control,
+  .dashboard-header-control:first-child,
+  .dashboard-date-status {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 160px;
+  }
+
+  .dashboard-share-button {
+    display: none;
+  }
+}
+
+
+/* ==========================================================
+   VIEW LEVEL NAVIGATION
+   ========================================================== */
+
+.view-level-section {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.view-level-top-row {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 18px 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.view-level-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.view-level-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #687987;
+  white-space: nowrap;
+}
+
+.view-level-left .btn-group {
+  gap: 6px;
+}
+
+.view-level-left .btn {
+  border: 1px solid #D8DEE3 !important;
+  border-radius: 8px !important;
+  background: #FFFFFF !important;
+
+  color: var(--color-ink) !important;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  padding: 8px 14px;
+  box-shadow: none !important;
+}
+
+.view-level-left .btn.active,
+.view-level-left .btn:active,
+.view-level-left .btn-check:checked + .btn {
+  background: var(--color-ink) !important;
+  border-color: var(--color-ink) !important;
+  color: #FFFFFF !important;
+}
+
+.view-level-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.view-level-helper {
+  font-size: 11px;
+  color: #687987;
+  line-height: 1.4;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+
+  .view-level-top-row {
+    padding: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .view-level-left {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .view-level-right {
+    justify-content: space-between;
+  }
+
+  .view-level-helper {
+    text-align: left;
+  }
+}
+
+
+/* ==========================================================
+   VIEW LEVEL SVG ICONS
+   ========================================================== */
+
+.view-level-left .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.view-level-icon {
+  width: 16px;
+  height: 16px;
+
+  display: inline-block;
+  flex: 0 0 16px;
+
+  background-color: currentColor;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+.icon-summary {
+  -webkit-mask-image: url("icons/Summary.svg");
+  mask-image: url("icons/Summary.svg");
+}
+
+.icon-details {
+  -webkit-mask-image: url("icons/Details.svg");
+  mask-image: url("icons/Details.svg");
+}
+
+.icon-evidence {
+  -webkit-mask-image: url("icons/Evidence.svg");
+  mask-image: url("icons/Evidence.svg");
+}
+
+
+/* ==========================================================
+   SECTION HEADING
+   ========================================================== */
+
+.section-heading {
+  margin-bottom: 16px;
+}
+
+.section-eyebrow {
+  margin-bottom: 6px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  color: #687987;
+}
+
+.section-title {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 650;
+  line-height: 1.2;
+
+  color: var(--color-ink);
+}
+
+.section-subtitle {
+  margin-top: 6px;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  color: #687987;
+}
+
+
+/* ==========================================================
+   WATER BUDGET PERIOD CONTROL
+   ========================================================== */
+
+.wb-heading-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.wb-period-control {
+  width: 160px;
+}
+
+.wb-period-label {
+  margin-bottom: 5px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+
+  color: #687987;
+}
+
+.wb-period-control .form-group {
+  margin-bottom: 0;
+}
+
+.wb-period-control .form-control {
+  height: 40px;
+
+  border: 1px solid #D8DEE3;
+  border-radius: 8px;
+
+  background: #FFFFFF;
+  color: var(--color-ink);
+
+  font-size: 12px;
+  font-weight: 500;
+
+  box-shadow: none;
+}
+
+
+.wb-period-note {
+  margin-bottom: 6px;
+
+  font-size: 10px;
+  line-height: 1.3;
+
+  color: #8B9AA5;
+}
+
+
+/* ==========================================================
+   SUMMARY SECTION SPACING
+   ========================================================== */
+
+.dashboard-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.water-budget-section {
+  margin: 0;
+}
+
+
+/* ==========================================================
+   CURRENT CONDITIONS GRID
+   ========================================================== */
+
+.conditions-grid,
+.condition-cards,
+.condition-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+
+  .conditions-grid,
+  .condition-cards,
+  .condition-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+
+  .conditions-grid,
+  .condition-cards,
+  .condition-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================
+   CURRENT CONDITIONS CARD SHELL
+   ========================================================== */
+
+.condition-card {
+  background: var(--color-card);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+
+  box-shadow: var(--shadow-card);
+
+  min-width: 0;
+  overflow: hidden;
+}
+
+
+/* ==========================================================
+   CURRENT CONDITIONS CARD SPACING
+   ========================================================== */
+
+.condition-card {
+  padding: 18px;
+}
+
+.condition-card .condition-label,
+.condition-card .condition-title {
+  margin-bottom: 8px;
+}
+
+.condition-card .condition-value {
+  margin-bottom: 6px;
+}
+
+.condition-card .condition-source {
+  margin-bottom: 10px;
+}
+
+.condition-card .condition-comparison {
+  margin-top: 8px;
+}
+
+
+/* ==========================================================
+   CURRENT CONDITIONS TYPOGRAPHY
+   ========================================================== */
+
+.condition-card .condition-label,
+.condition-card .condition-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: #687987;
+}
+
+.condition-card .condition-value {
+  font-size: 28px;
+  font-weight: 650;
+  line-height: 1.1;
+
+  color: var(--color-ink);
+}
+
+.condition-card .condition-unit {
+  font-size: 13px;
+  font-weight: 500;
+
+  color: #687987;
+}
+
+.condition-card .condition-source {
+  font-size: 11px;
+  line-height: 1.4;
+
+  color: #8B9AA5;
+}
+
+.condition-card .condition-comparison {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  color: var(--color-ink);
+}
+
+
+/* ==========================================================
+   ILLUSTRATIVE STATUS
+   ========================================================== */
+
+.badge-warning {
+  background: #FFF3E8 !important;
+  color: var(--color-warning) !important;
+  border: 1px solid rgba(217, 119, 6, 0.22);
+}
+
+
+/* ==========================================================
+   WATER BUDGET SECTION
+   ========================================================== */
+
+.water-budget-section {
+  width: 100%;
+  min-width: 0;
+}
+
+.water-budget-section > .section-heading {
+  margin-bottom: 16px;
+}
+
+.water-budget-section .wb-heading-row {
+  margin-bottom: 16px;
+}
+
+/* ==========================================================
+   WATER BUDGET HERO
+   ========================================================== */
+
+.water-budget-section .wb-hero {
+  background: var(--color-water-light);
+  border: 1px solid rgba(51, 104, 145, 0.16);
+  border-radius: var(--radius-card);
+
+  padding: 24px;
+
+  box-shadow: var(--shadow-card);
+}
+
+.water-budget-section .wb-hero-value {
+  color: var(--color-ink);
+
+  font-size: 32px;
+  font-weight: 650;
+  line-height: 1.1;
+}
+
+.water-budget-section .wb-hero-label {
+  color: var(--color-ink);
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.water-budget-section .wb-hero-equation {
+  margin-top: 10px;
+
+  color: #687987;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+
+.water-avail-card .chart-conversion-note {
+  margin-top: 10px;
+  color: #687987;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+
+
+/* =========================================================
+   WATER AVAILABILITY VS MUNICIPAL USE
+   ========================================================= */
+
+.water-avail-section {
+  margin-top: 32px;
+}
+
+.water-avail-card {
+  background: #FFFFFF;
+  border: 1px solid #F3F4F6;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+}
+
+/* Header */
+.water-avail-card .chart-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.water-avail-card .chart-title {
+  margin: 0 0 4px;
+  color: #172533;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.water-avail-card .chart-subtitle {
+  color: #687987;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Summary bar */
+.water-avail-card .chart-stats-bar {
+  display: grid;
+  grid-template-columns: 132px 1px 180px 1fr;
+  align-items: center;
+  gap: 20px;
+
+  min-height: 74px;
+  margin-bottom: 16px;
+  padding: 12px 14px;
+
+  background: #F7F8F8;
+  border: 1px solid rgba(23, 37, 51, 0.06);
+  border-radius: 10px;
+}
+
+.water-avail-card .stat-divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(23, 37, 51, 0.10);
+}
+
+.water-avail-card .stat-block-label {
+  margin-bottom: 4px;
+  color: #8A98A8;
+  font-size: 8px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.water-avail-card .stat-block-value {
+  margin-bottom: 3px;
+  font-size: 16px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.water-avail-card .stat-water {
+  color: #336891;
+}
+
+.water-avail-card .stat-municipal {
+  color: #F45932;
+}
+
+.water-avail-card .stat-provenance {
+  margin-left: 2px;
+  color: #7A8794;
+  font-size: 8px;
+  vertical-align: middle;
+}
+
+.water-avail-card .stat-block-comparison {
+  color: #687987;
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.water-avail-card .stat-below {
+  color: #E75B52;
+}
+
+.water-avail-card .stat-above {
+  color: #F45932;
+}
+
+.water-avail-card .stat-note {
+  justify-self: end;
+  align-self: end;
+  color: #8A98A8;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+/* Plotly container */
+.water-avail-card .chart-container {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+  .water-avail-card {
+    padding: 18px;
+  }
+
+  .water-avail-card .chart-header-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .water-avail-card .chart-stats-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .water-avail-card .stat-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .water-avail-card .stat-note {
+    justify-self: start;
+  }
+}
+
+
+/* Water availability view toggle */
+.water-avail-card .view-toggle .btn-group {
+  padding: 3px;
+  background: #F3F4F6;
+  border-radius: 10px;
+}
+
+.water-avail-card .view-toggle .btn {
+  min-height: 32px;
+  padding: 6px 12px;
+
+  border: 0 !important;
+  border-radius: 8px !important;
+
+  background: transparent;
+  box-shadow: none !important;
+
+  color: #687987;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.water-avail-card .view-toggle .btn.active {
+  background: #FFFFFF;
+  color: #172533;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) !important;
+}
+
+
+
+
+/* ==========================================================
+   WATER BUDGET BALANCE INDICATOR
+   ========================================================== */
+
+.wb-balance {
+  margin-top: 20px;
+}
+
+.wb-balance-track {
+  position: relative;
+
+  width: 100%;
+  height: 8px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #F6D4CC 0%,
+      #EEF3F5 50%,
+      var(--color-ecology-light) 100%
+    );
+}
+
+.wb-balance-center {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 50%;
+
+  width: 1px;
+
+  background: rgba(23, 37, 51, 0.35);
+}
+
+.wb-balance-marker {
+  position: absolute;
+  top: 50%;
+
+  width: 16px;
+  height: 16px;
+
+  border: 3px solid#FFFFFF ;
+  border-radius: 50%;
+
+  background: var(--color-ink);
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+
+  transform: translate(-50%, -50%);
+}
+
+.wb-balance-labels {
+  margin-top: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  font-size: 10px;
+  line-height: 1.3;
+
+  color: #687987;
+}
+
+.wb-balance-labels span:nth-child(2) {
+  text-align: center;
+}
+
+.wb-balance-labels span:last-child {
+  text-align: right;
+}
+
+/* ==========================================================
+   WATER BUDGET COMPONENT CARDS
+   ========================================================== */
+
+.water-budget-section .conditions-grid {
+  grid-template-columns: repeat(5, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+.water-budget-section .condition-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+
+  padding: 18px;
+
+  box-shadow: var(--shadow-card);
+}
+
+.water-budget-section .condition-tooltip {
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+
+
+.water-budget-section .condition-card .condition-value {
+  font-size: 26px;
+}
+
+.water-budget-section .condition-card .condition-source {
+  margin-top: 8px;
+}
+
+@media (max-width: 1100px) {
+
+  .water-budget-section .conditions-grid {
+    grid-template-columns: repeat(5, 190px);
+  }
+
+  .water-budget-section .conditions-scroll {
+    overflow-x: auto;
+  }
+}
+
+/* ==========================================================
+   WATER BUDGET CATEGORY HEADERS
+   ========================================================== */
+
+.water-budget-section .conditions-category-grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.water-budget-section .condition-category {
+  min-width: 0;
+}
+
+.water-budget-section .category-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.water-budget-section .category-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.water-budget-section .category-availability .category-label {
+  color: var(--color-water);
+}
+
+.water-budget-section .category-demand .category-label {
+  color: var(--color-municipal);
+}
+
+.water-budget-section .category-rule {
+  height: 1px;
+  flex: 1;
+
+  background: #D8DEE3;
+}
+
+.water-budget-section .category-question {
+  margin-top: 5px;
+
+  font-size: 11px;
+  line-height: 1.4;
+
+  color: #687987;
+}
+
+/* ==========================================================
+   WATER BUDGET INPUT / OUTPUT STATES
+   ========================================================== */
+
+.water-budget-section .category-availability + .category-demand {
+  margin-left: 0;
+}
+
+.water-budget-section .condition-card:nth-child(-n+2) {
+  border-top: 1px solid var(--color-water);
+}
+
+.water-budget-section .condition-card:nth-child(n+3) {
+  border-top: 1px solid var(--color-municipal);
+}
+
+/* ==========================================================
+   WATER BUDGET BADGES
+   ========================================================== */
+
+.water-budget-section .condition-card .condition-badge,
+.water-budget-section .condition-card .badge,
+.water-budget-section .wb-kpi-badge {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 4px 8px;
+
+  border-radius: 999px;
+
+  background: #EEF3F5;
+  color: #687987;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+
+
+/* ==========================================================
+   WATER BUDGET HEADER ROW
+   ========================================================== */
+
+.water-budget-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 16px;
+}
+
+.water-budget-header-row .section-heading {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.water-budget-header-row .wb-period-control {
+  flex: 0 0 160px;
+}
+
+@media (max-width: 700px) {
+  .water-budget-header-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .water-budget-header-row .wb-period-control {
+    flex: none;
+    width: 160px;
+  }
+}
+
+/* ==========================================================
+   LOCAL WATER MANAGEMENT
+   ========================================================== */
+
+.local-management-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.local-management-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+}
+
+.local-management-label {
+  margin-bottom: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: #687987;
+}
+
+.local-management-status {
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.3;
+  color: var(--color-ink);
+}
+
+.local-management-meta {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #687987;
+}
+
+
+/* ==========================================================
+   LOCAL WATER MANAGEMENT — TWO COLUMN LAYOUT
+   ========================================================== */
+
+.local-management-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.local-management-explainer {
+  background: #EEF3F5;
+  border: 1px solid #D8DEE3;
+  border-radius: var(--radius-card);
+  padding: 24px;
+}
+
+.local-management-explainer-title {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.3;
+  color: var(--color-ink);
+}
+
+.local-management-explainer-text {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #687987;
+}
+
+@media (max-width: 700px) {
+  .local-management-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================
+   LOCAL WATER MANAGEMENT LINKS
+   ========================================================== */
+
+.local-management-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.local-management-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-water);
+  text-decoration: none;
+}
+
+.local-management-link:hover {
+  text-decoration: underline;
+}
+
+
+/* ==========================================================
+   KPI TOOLTIP — ALWAYS MATCH PARENT CARD
+   ========================================================== */
+
+.condition-card > .condition-tooltip {
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  box-sizing: border-box !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+
+/* Custom SVG icons inside KPI cards */
+.condition-icon-img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  object-fit: contain;
+  max-width: 20px;
+  max-height: 20px;
+}
+
+
+/* ==========================================================
+   WATER BUDGET HERO
+   ========================================================== */
+
+.wb-hero {
+  background: #C6D5E0;
+  border: 1px solid rgba(23, 37, 51, 0.15);
+  border-radius: 12px;
+  padding: 24px 40px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.wb-hero-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.wb-hero-left {
+  min-width: 0;
+  flex: 1;
+}
+
+.wb-hero-right {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.wb-hero-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.wb-year-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(23, 37, 51, 0.08);
+  color: #172533;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wb-provenance-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  color: #92400E;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.wb-hero-title {
+  font-size: 14px;
+  line-height: 1.35;
+  color: #172533;
+  margin-bottom: 4px;
+}
+
+.wb-hero-equation {
+  font-size: 11px;
+  line-height: 1.4;
+  color: rgba(23, 37, 51, 0.60);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  margin-bottom: 4px;
+}
+
+.wb-hero-note {
+  font-size: 11px;
+  line-height: 1.4;
+  color: rgba(23, 37, 51, 0.50);
+}
+
+.wb-hero-value-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.wb-hero-value {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: #172533;
+  font-variant-numeric: tabular-nums;
+}
+
+.wb-hero-unit {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  color: rgba(23, 37, 51, 0.55);
+}
+
+.wb-hero-desc {
+  margin-top: 4px;
+  font-size: 10px;
+  line-height: 1.3;
+  color: rgba(23, 37, 51, 0.55);
+}
+
+.wb-balance {
+  margin-bottom: 12px;
+}
+
+.wb-balance-track {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #D46A6A, #336891);
+  overflow: visible;
+}
+
+.wb-balance-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 18px;
+  background: #172533;
+  border-radius: 1px;
+  opacity: 0.35;
+}
+
+.wb-balance-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2.5px solid #336891;
+  box-shadow: 0 0 0 2px rgba(51, 104, 145, 0.22);
+}
+
+.wb-balance-labels {
+  position: relative;
+  height: 16px;
+  margin-top: 8px;
+  font-size: 10px;
+  color: rgba(23, 37, 51, 0.40);
+}
+
+.wb-balance-label-left {
+  position: absolute;
+  left: 0;
+}
+
+.wb-balance-label-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #172533;
+  font-weight: 500;
+}
+
+.wb-balance-label-right {
+  position: absolute;
+  right: 0;
+}
+
+.wb-hero-disclosure {
+  margin-top: 4px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #505D67;
+}
+
+@media (max-width: 800px) {
+  .wb-hero {
+    padding: 20px 24px;
+  }
+
+  .wb-hero-top-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .wb-hero-right {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .wb-hero-value-row {
+    justify-content: flex-start;
+  }
+}
+
+
+/* ==========================================================
+   WATER BUDGET — RESULT SUMMARY
+   ========================================================== */
+
+.wb-result-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 18px;
+  padding: 18px 22px;
+  background: #FFFFFF;
+  border: 1px solid rgba(23, 37, 51, 0.10);
+  border-radius: 12px;
+}
+
+.wb-result-main {
+  min-width: 0;
+}
+
+.wb-result-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.wb-result-delta {
+  margin-right: 4px;
+  color: rgba(23, 37, 51, 0.55);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.wb-result-value {
+  color: #172533;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.wb-result-unit {
+  color: rgba(23, 37, 51, 0.55);
+  font-size: 15px;
+}
+
+.wb-result-status {
+  margin-bottom: 3px;
+  color: #336891;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.wb-result-description {
+  color: #687987;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+
+/* + gain / − loss key */
+
+.wb-result-signs {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 0 0 auto;
+  padding-left: 22px;
+  border-left: 1px solid rgba(23, 37, 51, 0.10);
+}
+
+.wb-result-sign-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  color: #687987;
+  font-size: 11px;
+}
+
+.wb-result-sign-item strong {
+  color: #172533;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* ==========================================================
+   WATER BUDGET — ABOUT THIS ESTIMATE
+   ========================================================== */
+
+.wb-about-estimate {
+  margin-top: 10px;
+  padding: 13px 16px;
+  background: rgba(23, 37, 51, 0.035);
+  border-radius: 8px;
+}
+
+.wb-about-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.wb-about-icon {
+  color: #336891;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.wb-about-title {
+  color: #172533;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.wb-about-text {
+  max-width: 850px;
+  margin-bottom: 3px;
+  color: #687987;
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+.wb-about-link {
+  display: inline-block;
+  margin-top: 5px;
+  color: #336891;
+  font-size: 10.5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wb-about-link:hover,
+.wb-about-link:focus {
+  color: #172533;
+  text-decoration: underline;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .wb-result-summary {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px 18px;
+  }
+
+  .wb-result-signs {
+    padding-left: 0;
+    padding-top: 12px;
+    border-left: 0;
+    border-top: 1px solid rgba(23, 37, 51, 0.10);
+  }
+
+  .wb-about-estimate {
+    padding: 12px 14px;
+  }
+}
+
+
+/* Water availability chart legend */
+.water-avail-card .chart-html-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+
+  margin-top: 8px;
+  margin-bottom: 4px;
+
+  color: #687987;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.water-avail-card .chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.water-avail-card .chart-legend-line {
+  display: inline-block;
+  width: 22px;
+  height: 0;
+  border-top-width: 2px;
+  border-top-style: solid;
+}
+
+.water-avail-card .chart-legend-river {
+  border-top-color: #336891;
+}
+
+.water-avail-card .chart-legend-municipal {
+  border-top-color: #F45932;
+}
+
+.water-avail-card .chart-legend-typical {
+  border-top-color: #94A3B8;
+  border-top-style: dashed;
+}
+
+
+
+/* =========================================================
+   HEADER TIME PERIOD SELECTOR
+   ========================================================= */
+
+.time-period-control {
+  width: 176px;
+  min-width: 176px;
+}
+
+.time-period-control .form-group {
+  margin: 0;
+  width: 176px;
+}
+
+.time-period-control .selectize-control {
+  margin: 0;
+}
+
+.time-period-control .selectize-input {
+  width: 176px !important;
+  min-height: 40px !important;
+  height: 40px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  padding: 0 40px 0 14px !important;
+
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 10px !important;
+
+  box-shadow: none !important;
+
+  color: #FFFFFF !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+.time-period-control .selectize-input:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.38) !important;
+}
+
+.time-period-control .selectize-input.focus {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.18) !important;
+}
+
+.time-period-control .selectize-input .item {
+  color: #FFFFFF !important;
+}
+
+
+.time-period-control .selectize-input > input {
+  display: none !important;
+}
+
+.time-period-control .selectize-dropdown {
+  width: 280px !important;
+  margin-top: 8px !important;
+
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+
+  overflow: hidden;
+  z-index: 500;
+}
+
+.time-period-control .selectize-dropdown-content {
+  max-height: none;
+}
+
+.time-period-control .selectize-dropdown .option {
+  padding: 12px 16px;
+
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+
+  border-bottom: 1px solid #F9FAFB;
+}
+
+.time-period-control .selectize-dropdown .option:last-child {
+  border-bottom: 0;
+}
+
+.time-period-control .selectize-dropdown .option:hover,
+.time-period-control .selectize-dropdown .active {
+  background: #F9FAFB;
+  color: #172533;
+}
+
+.time-period-control .selectize-dropdown .selected {
+  background: #EEF3F7;
+  color: #172533;
+}
+
+
+
+/* =========================================================
+   TIME PERIOD — FINAL HEADER STYLE
+   ========================================================= */
+
+.time-period-control {
+  width: 176px;
+  min-width: 176px;
+}
+
+.time-period-control .form-group {
+  width: 176px;
+  margin: 0;
+}
+
+.time-period-control .selectize-control {
+  margin: 0;
+}
+
+.time-period-control .selectize-input {
+  width: 176px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  padding: 0 38px 0 14px !important;
+
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.30) !important;
+  border-radius: 10px !important;
+
+  box-shadow: none !important;
+
+  color: #FFFFFF !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.time-period-control .selectize-input .item {
+  color: #FFFFFF !important;
+}
+
+.time-period-control .selectize-input:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.40) !important;
+}
+
+.time-period-control .selectize-input.focus {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   WATERSHED — MATCH TIME PERIOD HEIGHT
+   ========================================================= */
+
+.dashboard-header-control:not(.time-period-control) .dashboard-control-value {
+  height: 40px !important;
+  min-height: 40px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  padding: 0 14px !important;
+}
+
+
+
+
+
+/* ==========================================================
+   MERGED APP ADDITIONS
+   Appended for the store-backed app. Existing tokens and
+   AESTHETIC_GUIDE.md §2.3 neutrals only.
+   ========================================================== */
+
+/* Stress banner mounted inside .dashboard-shell: the shell already
+   provides side padding and max width, so don't double them. */
+#stress_banner .current-conditions-section {
+  max-width: none;
+  padding: 0;
+}
+
+/* Summary: 5 condition cards under the 5-column category header
+   (3 availability + 1 demand + 1 context), as the water budget does. */
+#condition_cards .conditions-category-grid,
+#condition_cards .conditions-grid {
+  grid-template-columns: repeat(5, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 1100px) {
+  #condition_cards .conditions-category-grid,
+  #condition_cards .conditions-grid {
+    grid-template-columns: repeat(5, 190px);
+  }
+}
+
+/* Header WATERSHED selector reuses the time-period selectize styling;
+   match its 176px width (the :first-child rule sets 160px). */
+.dashboard-header-control.watershed-control {
+  width: 176px;
+  min-width: 176px;
+}
+
+/* Evidence rows (§6.10): flat rows, 1px dividers, no zebra striping. */
+.evidence-rows {
+  width: 100%;
+  margin-top: 12px;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #687987;
+}
+
+.evidence-rows td {
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.evidence-rows tr:last-child td {
+  border-bottom: 0;
+}
+
+.evidence-rows td:first-child {
+  width: 34%;
+  color: var(--color-ink);
+}

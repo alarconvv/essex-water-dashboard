@@ -1,0 +1,1521 @@
+/* Base stylesheet. Loaded BEFORE dashboard_new.css (see app.R), which
+   overrides the class names both files define. */
+
+.dashboard-shell {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px 48px;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #EAF1F6;
+}
+
+
+/* CURRENT CONDITIONS HERO */
+
+/* =====================================================
+   CURRENT CONDITIONS HERO
+   ===================================================== */
+
+
+/* Outer section */
+
+.current-conditions-section {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 24px;
+}
+
+
+/* Header row */
+
+.current-conditions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+
+/* CURRENT CONDITIONS */
+
+.current-conditions-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9CA3AF;
+}
+
+
+/* Updated 8:15 PM */
+
+.current-conditions-updated {
+  font-size: 11px;
+  color: #9CA3AF;
+}
+
+
+/* Main card */
+
+.current-conditions-card {
+  border-radius: 12px;
+  border: 1px solid #FDE68A;
+  overflow: hidden;
+  background-color: #FFFBEB;
+}
+
+
+/* Inner padding */
+
+.current-conditions-inner {
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+/* Top content row */
+
+.current-conditions-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+
+/* Left text area */
+
+.current-conditions-copy {
+  min-width: 0;
+}
+
+
+/* High Watershed Stress badge */
+
+.stress-status-badge {
+  display: inline-block;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+  border-radius: 9999px;
+
+  margin-bottom: 8px;
+
+  background-color: #FEF3C7;
+  color: #78350F;
+}
+
+
+/* Description */
+
+.stress-description {
+  font-size: 14px;
+  line-height: 1.375;
+  color: #78350F;
+}
+
+
+/* Score wrapper */
+
+.stress-score-display {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+
+/* 62 */
+
+.stress-score-number {
+  font-size: 48px;
+  font-weight: 700;
+
+  font-variant-numeric: tabular-nums;
+
+  line-height: 1;
+
+  color: #78350F;
+}
+
+
+/* / 100 */
+
+.stress-score-total {
+  font-size: 20px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: #78350F;
+
+  opacity: 0.5;
+}
+
+
+/* Stress bar section */
+
+.stress-bar-section {
+  margin-bottom: 12px;
+}
+
+
+/* Gradient */
+
+.stress-gradient-track {
+  position: relative;
+
+  height: 8px;
+
+  border-radius: 9999px;
+
+  background: linear-gradient(
+    to right,
+    #4FA8B8,
+    #6BCB77 33%,
+    #FFD166 66%,
+    #FF6B6B
+  );
+
+  overflow: visible;
+}
+
+
+/* 62% indicator */
+
+.stress-indicator {
+  position: absolute;
+
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background-color: #F97316;
+
+  border: 3px solid #FFFBEB;
+
+  box-shadow:
+    0 0 0 3px rgba(249, 115, 22, 0.30);
+}
+
+
+/* Axis labels */
+
+.stress-axis-labels {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 8px;
+
+  font-size: 10px;
+
+  color: #92400E;
+}
+
+
+/* Sources */
+
+.stress-source-line {
+  font-size: 10px;
+
+  color: #92400E;
+
+  opacity: 0.5;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  
+  .stress-top {
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .score-number {
+    font-size: 44px;
+  }
+}
+
+/* CURRENT CONDITION CARDS */
+
+/* =========================================================
+   UNDERSTANDING TODAY'S CONDITIONS
+   ========================================================= */
+
+
+
+/* ---------------------------------------------------------
+   Section heading
+   --------------------------------------------------------- */
+
+.conditions-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9CA3AF;
+  margin-bottom: 20px;
+}
+
+
+/* ---------------------------------------------------------
+   Horizontal scroll area
+   --------------------------------------------------------- */
+
+.conditions-scroll {
+  overflow-x: auto;
+  width: 100%;
+  padding-bottom: 4px;
+}
+
+.conditions-scroll-inner {
+  min-width: 900px;
+}
+
+
+/* ---------------------------------------------------------
+   Category label row
+   --------------------------------------------------------- */
+
+.conditions-category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.condition-category {
+  min-width: 0;
+}
+
+.category-availability {
+  grid-column: span 3 / span 3;
+}
+
+.category-demand {
+  grid-column: span 1 / span 1;
+}
+
+.category-context {
+  grid-column: span 1 / span 1;
+}
+
+.category-header-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.category-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.category-availability .category-label {
+  color: #1E3A8A;
+}
+
+.category-demand .category-label {
+  color: #F59E0B;
+}
+
+.category-context .category-label {
+  color: #047857;
+}
+
+.category-rule {
+  flex: 1;
+  height: 1px;
+  background-color: #E5E7EB;
+}
+
+.category-question {
+  font-size: 12px;
+  color: #9CA3AF;
+}
+
+
+/* ---------------------------------------------------------
+   Cards grid
+   --------------------------------------------------------- */
+
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+
+/* ---------------------------------------------------------
+   Base KPI card
+   --------------------------------------------------------- */
+
+.condition-card {
+  position: relative;
+  text-align: left;
+  width: 100%;
+  min-width: 0;
+
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #F3F4F6;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+
+  overflow: hidden;
+}
+
+.condition-card:hover {
+  border-color: #D1D5DB;
+
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.10),
+    0 2px 4px -2px rgba(0, 0, 0, 0.10);
+}
+
+
+/* ---------------------------------------------------------
+   Top row
+   --------------------------------------------------------- */
+
+.condition-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+  min-height: 36px;
+}
+
+.condition-card-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+
+/* ---------------------------------------------------------
+   Icons
+   --------------------------------------------------------- */
+
+.condition-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.condition-icon i,
+.condition-icon svg {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+}
+
+.icon-flow,
+.icon-groundwater {
+  background-color: #EFF6FF;
+  color: #1E3A8A;
+}
+
+.icon-rain {
+  background-color: #F0FDFA;
+  color: #0EA5A4;
+}
+
+.icon-pumping {
+  background-color: #FFFBEB;
+  color: #F59E0B;
+}
+
+.icon-ecology {
+  background-color: #FEF2F2;
+  color: #EF4444;
+}
+
+
+/* ---------------------------------------------------------
+   Condition badges
+   --------------------------------------------------------- */
+
+.condition-badge {
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+
+  padding: 2px 8px;
+
+  border-radius: 9999px;
+  border: 1px solid;
+
+  white-space: nowrap;
+}
+
+.condition-badge.badge-critical {
+  background-color: #FEF2F2;
+  color: #B91C1C;
+  border-color: #FECACA;
+}
+
+.condition-badge.badge-warning {
+  background-color: #FFFBEB;
+  color: #B45309;
+  border-color: #FDE68A;
+}
+
+.condition-badge.badge-good {
+  background-color: #F0FDF4;
+  color: #15803D;
+  border-color: #BBF7D0;
+}
+
+
+/* ---------------------------------------------------------
+   Card title
+   --------------------------------------------------------- */
+
+.condition-card-title {
+  font-size: 11px;
+  font-weight: 500;
+
+  color: #6B7280;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  margin-bottom: 6px;
+}
+
+
+/* ---------------------------------------------------------
+   Measurement
+   --------------------------------------------------------- */
+
+.condition-value {
+  font-size: 30px;
+  font-weight: 700;
+  color: #111827;
+
+  line-height: 1;
+
+  margin-bottom: 6px;
+
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.value-number {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+.value-unit {
+  font-size: 16px;
+  font-weight: 400;
+  color: #9CA3AF;
+  line-height: 1.2;
+}
+
+
+/* ---------------------------------------------------------
+   Source area
+   --------------------------------------------------------- */
+
+.condition-source-area {
+  height: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-source {
+  font-size: 12px;
+  color: #9CA3AF;
+  line-height: 1.375;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   Comparison
+   --------------------------------------------------------- */
+
+.card-comparison {
+  padding-top: 12px;
+  margin-top: auto;
+
+  border-top: 1px solid #F3F4F6;
+
+  font-size: 12px;
+  color: #4B5563;
+  line-height: 1.375;
+}
+
+
+/* Comparison emphasis follows the existing badge class.
+   No data logic is changed. */
+
+.card-comparison.badge-critical {
+  font-weight: 600;
+  color: #DC2626;
+}
+
+.card-comparison.badge-warning {
+  font-weight: 600;
+  color: #D97706;
+}
+
+.card-comparison.badge-good {
+  font-weight: 600;
+  color: #4B5563;
+}
+
+
+/* ---------------------------------------------------------
+   Hover tooltip
+   --------------------------------------------------------- */
+
+.condition-tooltip {
+  position: absolute;
+  inset: 0;
+  
+box-sizing: border-box;
+
+
+  z-index: 5;
+
+  border-radius: 12px;
+  border: 1px solid rgba(29, 78, 91, 0.40);
+
+  background-color: #FFFFFF;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+overflow-y: auto;
+  gap: 12px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 200ms ease;
+}
+
+.condition-card:hover .condition-tooltip {
+  opacity: 1;
+}
+
+.condition-tooltip-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #1D4E5B;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.375;
+}
+
+.condition-tooltip-heading i,
+.condition-tooltip-heading svg {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+
+  flex-shrink: 0;
+}
+
+.condition-tooltip-body {
+  font-size: 12px;
+  line-height: 1.625;
+
+  color: #1D4E5B;
+  opacity: 0.75;
+}
+
+
+/* ---------------------------------------------------------
+   Narrow screens
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .conditions-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+.chart-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0 12px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 640px) {
+
+  .current-conditions-inner {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+@media (max-width: 639px) {
+
+  .current-conditions-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .current-conditions-top {
+    gap: 16px;
+  }
+
+  .stress-score-number {
+    font-size: 40px;
+  }
+
+  .stress-score-total {
+    font-size: 16px;
+  }
+
+  .stress-axis-labels {
+    gap: 6px;
+  }
+
+  .stress-axis-labels span {
+    max-width: 70px;
+  }
+}
+
+
+/* =========================================================
+   KPI CARD INTERACTION — COMPLETE SPEC
+   ========================================================= */
+
+
+/* Interactive card */
+
+.condition-card-interactive {
+  cursor: pointer;
+  font-family: inherit;
+  appearance: none;
+}
+
+
+/* Hover */
+
+.condition-card-interactive:hover {
+  border-color: #D1D5DB;
+
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.10),
+    0 2px 4px -2px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Pressed */
+
+.condition-card-interactive:active {
+  transform: scale(0.99);
+
+  box-shadow:
+    0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+/* Keyboard focus */
+
+.condition-card-interactive:focus {
+  outline: none;
+}
+
+.condition-card-interactive:focus-visible {
+  outline: none;
+  outline-offset: 2px;
+
+  box-shadow:
+    0 0 0 2px #FFFFFF,
+    0 0 0 4px #1D4E5B;
+}
+
+
+/* Selected */
+
+.condition-card.selected {
+  border-color: rgba(29, 78, 91, 0.30);
+  background-color: rgba(29, 78, 91, 0.025);
+
+  box-shadow:
+    0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+/* Badge + chevron */
+
+.condition-card-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+
+/* Chevron */
+
+.condition-chevron {
+  width: 14px;
+  height: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #D1D5DB;
+
+  transition:
+    color 150ms ease,
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+
+.condition-chevron i,
+.condition-chevron svg {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+}
+
+
+/* Chevron selected */
+
+.condition-card.selected .condition-chevron {
+  color: #1D4E5B;
+}
+
+
+/* Chevron hover */
+
+.condition-card:hover .condition-chevron {
+  opacity: 0;
+  transform: translateX(2px);
+}
+
+
+/* Tooltip footer */
+
+.condition-tooltip-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  padding-top: 8px;
+
+  border-top:
+    1px solid rgba(29, 78, 91, 0.10);
+
+  margin-top: auto;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  color: rgba(29, 78, 91, 0.50);
+}
+
+.condition-tooltip-footer i,
+.condition-tooltip-footer svg {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+
+  color: rgba(29, 78, 91, 0.50);
+}
+
+
+/* =========================================================
+   TOP APPLICATION HEADER
+   ========================================================= */
+
+.app-header {
+  width: 100%;
+  height: 56px;
+  background-color: #1D4E5B;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+}
+
+.app-header-inner {
+  width: 100%;
+  max-width: 1400px;
+  height: 56px;
+  margin: 0 auto;
+  padding: 0 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+}
+
+
+/* Brand */
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+}
+
+.brand-icon i,
+.brand-icon svg {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.brand-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+
+/* Right-side controls */
+
+.app-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.header-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.header-control i,
+.header-control svg {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.header-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 16px;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.header-share i,
+.header-share svg {
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+}
+
+/* =========================================================
+   VIEW LEVEL NAVIGATION
+   ========================================================= */
+
+/* View Level buttons only */
+
+.view-level-section .btn-group .btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #667085;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  padding: 8px 12px;
+
+  border-radius: 10px;
+
+  box-shadow: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.view-level-section .btn-group .btn.active,
+.view-level-section .btn-group .btn-check:checked + .btn {
+  background-color: #EAF1F3;
+  color: #1D4E5B;
+
+  border: 1px solid #B7C9CF;
+  border-radius: 10px;
+
+  box-shadow: none;
+}
+
+.view-level-section .btn-group .btn:hover {
+  background-color: #F8FAFC;
+  color: #1D4E5B;
+}
+
+/* =========================================================
+   VIEW LEVEL WRAPPER
+   ========================================================= */
+
+.view-level-section {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E5E7EB;
+
+  margin: 0;
+  padding: 0;
+}
+
+.view-level-top-row {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 10px 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  box-sizing: border-box;
+}
+
+.view-level-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  min-width: 0;
+}
+
+.view-level-label {
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  color: #9CA3AF;
+
+  white-space: nowrap;
+}
+
+.view-level-right {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-left: auto;
+}
+
+.view-level-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.view-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #D1D5DB;
+}
+
+.view-dot.active {
+  background-color: #1D4E5B;
+}
+
+.view-level-helper {
+  font-size: 11px;
+  color: #94A3B8;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   VIEW LEVEL — ALIGNMENT AND BUTTON SPACING
+   ========================================================= */
+
+/* Align the label and button group vertically */
+.view-level-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Remove the default Shiny radio-group spacing */
+.view-level-left .form-group,
+.view-level-left .shiny-input-container {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Give the three buttons breathing room */
+.view-level-section .btn-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Prevent the buttons from touching or stretching */
+.view-level-section .btn-group .btn {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  border-radius: 10px !important;
+}
+
+/* Keep the label centered with the controls */
+.view-level-label {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  line-height: 1;
+}
+
+
+/* =========================================
+   WATER BUDGET — FIVE CARD GRID
+   ========================================= */
+
+.wb-card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.wb-card-wrapper {
+  min-width: 0;
+  height: 100%;
+}
+
+.wb-kpi-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 190px;
+
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+/* INPUTS — BLUE */
+.wb-card-wrapper-input .wb-kpi-card {
+  border-top: 3px solid #245B73;
+}
+
+/* OUTPUTS — ORANGE */
+.wb-card-wrapper-output .wb-kpi-card {
+  border-top: 3px solid #F59E0B;
+}
+
+/* Icon */
+.wb-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 14px;
+}
+
+.wb-icon-input {
+  background: rgba(36, 91, 115, 0.10);
+  color: #245B73;
+}
+
+.wb-icon-output {
+  background: #FFF7ED;
+  color: #F59E0B ;
+}
+
+/* Prototype badge */
+.wb-kpi-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  background: #F3F4F6;
+  color: #6B7280;
+
+  padding: 3px 7px;
+  border-radius: 999px;
+}
+
+/* Text */
+.wb-kpi-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 5px;
+}
+
+.wb-kpi-value {
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.wb-kpi-unit {
+  font-size: 11px;
+  color: #6B7280;
+  margin-top: 3px;
+}
+
+.wb-kpi-comparison {
+  font-size: 11px;
+  color: #6B7280;
+  margin-top: 12px;
+}
+
+.wb-kpi-source {
+  font-size: 10px;
+  color: #9CA3AF;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+/* =========================================
+   WATER BUDGET — STORAGE CHANGE HERO
+   ========================================= */
+
+.wb-hero {
+  background: #F0F7F8;
+  border: 1px solid rgba(29, 78, 91, 0.15);
+  border-radius: 12px;
+  padding: 20px 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.wb-hero-badge {
+  display: inline-block;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1D4E5B;
+  margin-bottom: 8px;
+}
+
+.wb-hero-title {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 5px;
+}
+
+.wb-hero-equation {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #6B7280;
+  margin-bottom: 16px;
+}
+
+.wb-hero-value {
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 700;
+  color: #1D4E5B;
+  letter-spacing: -0.03em;
+}
+
+.wb-hero-unit {
+  font-size: 11px;
+  color: #6B7280;
+  margin-top: 6px;
+}
+
+.wb-hero-note {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #6B7280;
+  margin-top: 12px;
+}
+
+@media (min-width: 768px) {
+  .wb-hero {
+    padding: 24px 40px;
+  }
+}
+
+/* WATER BUDGET — CATEGORY ALIGNMENT */
+
+.water-budget-section .conditions-category-grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 12px;
+}
+
+.water-budget-section .conditions-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+/* WATER BUDGET — FORCE TWO CATEGORY COLUMNS */
+
+.water-budget-section .conditions-category-grid {
+  display: grid !important;
+  grid-template-columns: 2fr 3fr !important;
+  gap: 12px !important;
+  width: 100%;
+  align-items: start;
+}
+
+.water-budget-section .condition-category {
+  grid-column: auto !important;
+  width: 100%;
+  min-width: 0;
+}
+
+.water-budget-section .conditions-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 12px;
+}
+
+
+/* WATER BUDGET — BALANCE BAR */
+
+.wb-balance {
+  margin-top: 20px;
+}
+
+.wb-balance-track {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #D46A6A 0%,
+    #F59E0B 50%,
+    #4FA8B8 100%
+  );
+}
+
+.wb-balance-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 18px;
+  background: #1D4E5B;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+}
+
+.wb-balance-marker {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border: 2px solid #1D4E5B;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wb-balance-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 10px;
+  color: #6B7280;
+}
+
+
+/* WATER BUDGET — EQUATION STRIP */
+
+.wb-equation-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid rgba(29, 78, 91, 0.10);
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.wb-equation-strip span,
+.wb-equation-strip strong {
+  white-space: nowrap;
+}
+
+.wb-equation-input {
+  color: #245B73;
+  font-weight: 700;
+}
+
+.wb-equation-output {
+  color: #F59E0B;
+  font-weight: 700;
+}
+
+.wb-equation-result {
+  color: #1D4E5B;
+  font-weight: 700;
+}
+
+/* WATER BUDGET — STORAGE SUMMARY */
+
+.wb-storage-summary {
+  margin-top: 16px;
+  padding: 16px 20px;
+  border: 1px solid rgba(29, 78, 91, 0.09);
+  border-radius: 12px;
+  background: rgba(29, 78, 91, 0.02);
+}
+
+.wb-storage-summary-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1D4E5B;
+  margin-bottom: 6px;
+}
+
+.wb-storage-summary-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 4px;
+}
+
+.wb-storage-summary-text {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #6B7280;
+}
+
+/* WATER BUDGET — TOOLTIP SOURCE FORMATTING */
+
+.water-budget-section .condition-tooltip {
+  white-space: pre-line;
+}
+
+

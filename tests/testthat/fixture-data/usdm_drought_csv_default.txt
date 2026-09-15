@@ -1,0 +1,4 @@
+MapDate,FIPS,County,State,None,D0,D1,D2,D3,D4,ValidStart,ValidEnd,StatisticFormatID
+20260908,25009,Essex County,MA,0.00,100.00,1.77,0.00,0.00,0.00,2026-09-08,2026-09-14,1
+20260901,25009,Essex County,MA,0.00,100.00,1.77,0.00,0.00,0.00,2026-09-01,2026-09-07,1
+
